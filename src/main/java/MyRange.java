@@ -21,4 +21,29 @@ public class MyRange {
     public int getEnd() {
         return Integer.parseInt(String.valueOf(this.input.charAt(3)));
     }
+
+    public void fullLoop() {
+
+        int startNumber = 0;
+        int endNumber = 0;
+        if (isStartWithInclude()) {
+            int getStartNumber = getStart();
+            startNumber += getStartNumber;
+        }
+        else
+        {
+            int getStartNumber = getStart() + 1;
+            startNumber += getStartNumber;
+        }
+
+        if (isStartWithInclude()) {
+            int getEndNumberInclude = getEnd();
+            endNumber += getEndNumberInclude;
+        }
+        else
+        {
+            int getEndNumberExclude = getEnd() - 1;
+            endNumber += getEndNumberExclude;
+        }
+    }
 }

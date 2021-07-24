@@ -27,6 +27,18 @@ public class TennisGame1 {
         return m_score1 == m_score2 && m_score1 <= 2;
     }
 
+    public String NotEqualScoreForPlayer (int diffScore, String playerName)
+    {
+        if (diffScore < 2)
+        {
+            return "Advantage " + playerName;
+        }
+        else
+        {
+            return "Win for " + playerName;
+        }
+    }
+
     public String getScore() {
         String[] scoreResults = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
         if (isAll()) {
@@ -37,16 +49,18 @@ public class TennisGame1 {
             return "Deuce";
         }
 
-        // ???? Advantage and Win ????
         if (m_score1 >= 4 || m_score2 >= 4) {
-            StringBuilder score = new StringBuilder();
-            int minusResult = m_score1 - m_score2;
-            if (minusResult == 1) score = new StringBuilder("Advantage ").append(this.player1Name);
-            else if (minusResult == -1) score = new StringBuilder("Advantage ").append(this.player2Name);
-            else if (minusResult >= 2) score = new StringBuilder("Win for ").append(this.player1Name);
-            else score = new StringBuilder("Win for ").append(this.player2Name);
-            return score.toString();
+            int diffScore = m_score1 - m_score2; // if + means 1st > 2nd , - means 1st < 2nd
+            if (diffScore >= 0) // input player 1
+            {
+                return NotEqualScoreForPlayer(diffScore, player1Name);
+            }
+            else // input player 2
+            {
+                return NotEqualScoreForPlayer(diffScore * -1, player2Name);
+            }
         }
+
 
         return scoreResults[m_score1] + "-" + scoreResults[m_score2];
     }

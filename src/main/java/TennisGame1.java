@@ -29,14 +29,11 @@ public class TennisGame1 {
 
     public String getScore() {
         String[] scoreResults = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
-        // All
         if (isAll()) {
             return scoreResults[m_score1] + "-" + "All";
         }
 
-        // Deuce
         if (isDeuce()) {
-            // Deuce
             return "Deuce";
         }
 
@@ -51,7 +48,6 @@ public class TennisGame1 {
             return score.toString();
         }
 
-        // Normal game
         return scoreResults[m_score1] + "-" + scoreResults[m_score2];
     }
 }
